@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
 import requests
 
-app = Flask("MyApp")
+app = Flask("PickUpForm")
 
 # Display the form
 @app.route("/")
 def hello(name="World!!!"):
-    return render_template("my-app.html", name=name)
+    return render_template("Application.html", name=name)
 
 # Handle form submission
 @app.route("/signup", methods=["POST"])
