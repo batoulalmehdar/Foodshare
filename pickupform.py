@@ -28,4 +28,4 @@ else:
 return render_template('pickup_form.html', form=form)
 
 if PickUpForm == "PickUpForm":
-    app.run()
+app.run()
