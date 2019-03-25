@@ -21,9 +21,9 @@ print name
 
 if form.validate():
 # Save the comment here.
-flash('Hello ' + name)
+    flash('Hello ' + name)
 else:
-flash('All the form fields are required. ')
+    flash('All the form fields are required. ')
 
 return render_template('pickup_form.html', form=form)
 
