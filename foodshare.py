@@ -5,7 +5,7 @@ app = Flask("PickUpForm")
 
 # Display the form
 @app.route("/")
-    return render_template("Application.html", name=name)
+    return render_template("pickup_form.html", name=name)
 
 # Handle form submission
 @app.route("/signup", methods=["POST"])
