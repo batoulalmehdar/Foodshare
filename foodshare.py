@@ -1,28 +1,31 @@
-from flask import Flask, render_template, request
-import requests
+from flask import Flask, render_template, flash, request
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
-app = Flask("PickUpForm")
+# App config.
+DEBUG = True
+app = Flask(PickUpForm)
+app.config.from_object(PickUpForm)
+app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
-# Display the form
-@app.route("/")
-    return render_template("pickup_form.html", name=name)
+class ReusableForm(Form):
+name = TextField('Name:', validators=[validators.required()])
 
-# Handle form submission
-@app.route("/signup", methods=["POST"])
-def sign_up():
-    form_data = request.form
-    # Print out all the form data
-    print(form_data)
+@app.route("/", methods=['GET', 'POST'])
+def hello():
+form = ReusableForm(request.form)
 
-    #Send the email
-    requests.post(
-        "https://api.mailgun.net/v3/sandboxd21d655ac64e48d08c7c0e245e620ae0.mailgun.org/messages",
-        auth=("api", "7df13535b905f6f58d8b1f9b3aae0874-acb0b40c-c59e0ed6"),
-        data={"from": "Excited User <mailgun@sandboxd21d655ac64e48d08c7c0e245e620ae0.mailgun.org>",
-        "to": form_data["recipient"],
-                  "subject": "Hello",
-                  "text": form_data["body"]})
+print form.errors
+if request.method == 'POST':
+name=request.form['name']
+print name
 
-    return "All OK"
+if form.validate():
+# Save the comment here.
+flash('Hello ' + name)
+else:
+flash('All the form fields are required. ')
 
-app.run(debug=True)
+return render_template('pickup_form.html', form=form)
+
+if PickUpForm == "PickUpForm":
+app.run()
