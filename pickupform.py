@@ -16,11 +16,7 @@ def hello():
 
 print form.errors
 if request.method == 'POST':
-<<<<<<< HEAD
-    name=request.form['name']
-=======
     name = request.form['name']
->>>>>>> a04cb420d060bf73e554e3df978b06dcb1593f8a
 print name
 
 if form.validate():
