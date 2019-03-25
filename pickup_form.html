@@ -43,16 +43,16 @@
   </div>
   <div>
     Postcode:<br/>
-    <input type="text" name="postcode" value="AA11AA"/>
+    <input type="text" name="postcode" id="postcode" value="AA11AA"/>
    <button type="button" onclick="cp_obj.doLookup()">Find Address</button><br/>
     <span style="font-size:small"><br/></span><br/>
    <span id="crafty_postcode_result_display"> </span><br/>
    Address:<br/>
-   <input type="text" name="address1"/><br/>
-   <input type="text" name="address2"/><br/>
-   <input type="text" name="address3"/><br/>
+   <input type="text" id="address1" name="address1"/><br/>
+   <input type="text" id="address2" name="address2"/><br/>
+   <input type="text" id="address3" name="address3"/><br/>
    City:<br/>
-   <input type="text" name="town"/><br/>
+   <input type="text" id="town" name="town"/><br/>
   </div>
   <div>
     <label for="date"> Date of Event: </label>
@@ -68,7 +68,6 @@
     <p><button class="w3-button w3-black" type="submit">SUBMIT</button></p>
 
   </div>
-
 </form>
 </body>
 
