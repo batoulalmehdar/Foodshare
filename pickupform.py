@@ -10,10 +10,22 @@ def hello(name="World!!!"):
     return render_template("pickup_form.html", name=name)
 
 @app.route("/my-handling-form-page", methods=["POST"])
-def sign_up():
-    form_data = request.form
-    # Print out all the form data
-    print(form_data)
+def send_simple_message():
+    name = request.forms.get('user_name')
+    email =  request.forms.get('user_mail')
+    number =  request.forms.get('user_number')
+    postcode =  request.forms.get('postcode')
+    address1 =  request.forms.get('address1')
+    address2 =  request.forms.get('address2')
+    address3 =  request.forms.get('address3')
+    city =  request.forms.get('town')
+    date =  request.forms.get('user_date')
+    meals =  request.forms.get('user_meals')
+    comment =  request.forms.get('user_comments')
+    text = "Name: "+ name + "Email: " + email + "Mobile No.: " + number + "Postcode: " + postcode + "Address: " +
+    address1 + ", " + address2 + ", " + address3 + ", " + city + "Date: " + date + "No. of Meals: " +
+    meals + "Comments: " + comment
+    print(text)
 
     #Send the email
     requests.post(
@@ -22,8 +34,7 @@ def sign_up():
         data={"from": "Excited User <mailgun@sandboxd21d655ac64e48d08c7c0e245e620ae0.mailgun.org>",
         "to": form_data["user_mail"],
                   "subject": "Pick Up Meals",
-                  "html": form_data["user_name", "user_mail", "user_number", "postcode", "address1", "address2", "address3", "town",
-                  "user_date", "user_meals", "user_comments"]})
+                  "text": form_data["text"]})
 
     return "Thank you and we will be picking up the meal/s shortly."
 app.run(debug=True)
