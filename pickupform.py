@@ -22,7 +22,7 @@ def sign_up():
         data={"from": "Excited User <mailgun@sandboxd21d655ac64e48d08c7c0e245e620ae0.mailgun.org>",
         "to": form_data["user_mail"],
                   "subject": "Pick Up Meals",
-                  "text": form_data["user_name", "user_mail", "user_number", "postcode", "address1", "address2", "address3", "town",
+                  "html": form_data["user_name", "user_mail", "user_number", "postcode", "address1", "address2", "address3", "town",
                   "user_date", "user_meals", "user_comments"]})
 
     return "Thank you and we will be picking up the meal/s shortly."
