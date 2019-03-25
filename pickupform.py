@@ -4,9 +4,13 @@ import requests
 app = Flask("PickUpForm")
 
 # Display the form
-@app.route("/")
+@app.route("/pickup_form")
 def hello(name="World!!!"):
-    return render_template("pickup_form.html", name=name)
+    return render_template("pickup_form.html")
+
+@app.route("/")
+def about():
+    return render_template("aboutus1.html")
 
 @app.route("/my-handling-form-page", methods=["POST"])
 def sign_up():
