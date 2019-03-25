@@ -11,16 +11,19 @@ class ReusableForm(Form):
     name = TextField('Name:', validators=[validators.required()])
 
 @app.route("/", methods=['GET', 'POST'])
-def hello():
-    form = ReusableForm(request.form)
+def register(request):
+    form = RegistrationForm(request.POST)
+    if request.method == 'POST' and form.validate():
+        user = User()
+        user.username = form.username.data
+        user.email = form.email.data
+        user.save()
+        redirect('register')
+    return render_response('pickup_form.html', form=form)
 
 print form.errors
 if request.method == 'POST':
-<<<<<<< HEAD
-    name=request.form['name']
-=======
     name = request.form['name']
->>>>>>> a04cb420d060bf73e554e3df978b06dcb1593f8a
 print name
 
 if form.validate():
