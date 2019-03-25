@@ -24,7 +24,7 @@ if form.validate():
 flash('Hello ' + name)
 else:
 flash('All the form fields are required. ')
-
+ 
 return render_template('pickup_form.html', form=form)
 
 if PickUpForm == "PickUpForm":
